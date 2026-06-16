@@ -18,6 +18,17 @@ void UCleaningLog::RegisterCleaned(AActor* CleanedActor)
 
 	UE_LOG(LogTemp, Log, TEXT("[LOG] Limpiado: %s | Total limpiados: %d"),
 		   *Entry.ObjectName, Entries.Num());
+
 	float Progress = (float)Entries.Num() / (float)TotalObjects;
 	OnWorldProgressUpdated.Broadcast(Progress);
+}
+
+FString UCleaningLog::GetAllNamesAsString() const
+{
+	FString Result = "Objetos limpiados:\n";
+	for (const FCleaningLogEntry& Entry : Entries)
+	{
+		Result += "- " + Entry.ObjectName + "\n";
+	}
+	return Result;
 }

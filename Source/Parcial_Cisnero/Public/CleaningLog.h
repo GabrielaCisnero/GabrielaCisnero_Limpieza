@@ -41,6 +41,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	int32 GetCleanedCount() const { return Entries.Num(); }
+	
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	FString GetAllNamesAsString() const;
 
 private:
 	TArray<FCleaningLogEntry> Entries;
